@@ -9,7 +9,7 @@ class User(models.Model):
     def __str__(self):
         return self.name
     
-class Questions(models.Model):
+class Question(models.Model):
     name = models.CharField("Full name", max_length=250)
     email = models.EmailField("Email", unique=True)
     message = models.TextField("Question")
