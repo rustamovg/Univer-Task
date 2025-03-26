@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     # Custom apps
     'main_app',
+    "phonenumber_field",
 ]
 
 MIDDLEWARE = [
