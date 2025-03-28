@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-6^(c3p@gx=n#tu)3mw*9**=#n2@e)7dqh!2723n-zijeypmyt#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # Custom apps
     'main_app',
     "phonenumber_field",
+    'requests',
 ]
 
 MIDDLEWARE = [

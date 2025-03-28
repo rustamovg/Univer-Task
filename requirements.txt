@@ -3,7 +3,9 @@ certifi==2025.1.31
 chardet==4.0.0
 Django==5.1.7
 django-phonenumber-field==8.0.0
+gunicorn==23.0.0
 idna==2.10
+packaging==24.2
 phonenumbers==9.0.1
 requests==2.25.1
 sqlparse==0.5.3
