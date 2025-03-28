@@ -19,7 +19,7 @@
 	<meta property="og:type" content="article" />
 
     <!-- Website Title -->
-    <title>Corso - Training Course Landing Page Template</title>
+    <title>Corso</title>
     
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,600,700,700i&display=swap" rel="stylesheet">
@@ -28,12 +28,31 @@
     <link href="/static/css/swiper.css" rel="stylesheet">
 	<link href="/static/css/magnific-popup.css" rel="stylesheet">
 	<link href="/static/css/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
 	
 	<!-- Favicon  -->
     <link rel="icon" href="/media/images/favicon.png">
 </head>
+
 <body data-spy="scroll" data-target=".fixed-top">
-    
+    <!-- Bootstrap Modal -->
+    <div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-bg-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="messageModalLabel">Bildirishnoma</h5>
+                    <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+                </div>
+                <div class="modal-body text-bg-dark">
+                    {{ message }}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Yopish</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Preloader -->
 	<div class="spinner-wrapper">
         <div class="spinner">
@@ -64,13 +83,13 @@
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link page-scroll" href="#register">REGISTER <span class="sr-only">(current)</span></a>
+                    <a class="nav-link page-scroll" href="#register">Ro'yhatdan o'tish <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link page-scroll" href="#description">DETAILS</a>
+                    <a class="nav-link page-scroll" href="#description">Tafsilotlat</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link page-scroll" href="#contact">CONTACT</a>
+                    <a class="nav-link page-scroll" href="#contact">Bog'lanish</a>
                 </li>
             </ul>
             <span class="nav-item social-icons">
@@ -98,13 +117,10 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="text-container">
-                        <div class="countdown">
-                            <span id="clock"></span>
-                        </div>
-                        <h1>SEO Training Course</h1>
-                        <p class="p-large">Do you feel like you're doing a lot of guess work when it comes to SEO for your website? Take the SEO training course to change that</p>
-                        <a class="btn-solid-lg page-scroll" href="#register">REGISTER</a>
-                        <a class="btn-outline-lg page-scroll" href="#instructor">DISCOVER</a>
+                        <h1>O'qitish kursi</h1>
+                        <p class="p-large">Dars berishni hohlaysiz, lekin tajribangiz yo'qmi, qayerdan o'rganishni bilmayabsizmi? Buni o'zgartirish vaqti keldi</p>
+                        <a class="btn-solid-lg page-scroll" href="#register">Ro'yhatdan o'ting</a>
+                        <a class="btn-outline-lg page-scroll" href="#instructor">Biz haqimizda</a>
                     </div> <!-- end of text-container -->
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
@@ -156,20 +172,20 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="text-container">
-                        <h2>Register Using The Form</h2>
-                        <p>It's easy to register for the course, just fill out the form and click submit. Then you will be registered for one of the best SEO training courses in the industry</p>
+                        <h2>Forma orqali ro'yhatdan o'ting</h2>
+                        <p>Kursga ro‘yxatdan o‘tish juda oson, anketani to‘ldirib, “yuborish” tugmasini bosish kifoya. Shunda siz sohadagi eng yaxshi O'qitish kurslaridan biriga ro'yxatdan o'tasiz</p>
                         <ul class="list-unstyled li-space-lg">
                             <li class="media">
                                 <i class="fas fa-square"></i>
-                                <div class="media-body"><strong>Your information</strong> is required to complete the registration</div>
+                                <div class="media-body">Sizning <strong>ma'lumotlaringiz</strong> ro‘yxatdan o‘tishni yakunlash uchun zarur</div>
                             </li>
                             <li class="media">
                                 <i class="fas fa-square"></i>
-                                <div class="media-body"><strong>It's safe with us</strong> and will not be used for marketing</div>
+                                <div class="media-body"><strong>Bu havfsiz</strong> va reklama uchun ishlatilmaydi</div>
                             </li>
                             <li class="media">
                                 <i class="fas fa-square"></i>
-                                <div class="media-body"><strong>You will receive</strong> a confirmation email in less than 24h</div>
+                                <div class="media-body"><strong>Tasdiqlovchi elektron pochta</strong> 24 soat ichida qo'lingizda bo'ladi</div>
                             </li>
                         </ul>
                     </div> <!-- end of text-container -->
@@ -182,7 +198,7 @@
                             {% csrf_token %}
                             <div class="form-group">
                                 <input type="text" class="form-control-input" name="name" required>
-                                <label class="label-control" for="name">Name</label>
+                                <label class="label-control" for="name">Ism</label>
                                 <div class="help-block with-errors">{{ user_form.name.errors }}</div>
                             </div>
                             <div class="form-group">
@@ -192,11 +208,11 @@
                             </div>
                             <div class="form-group">
                                 <input class="form-control-input" name="phone_number" required>
-                                <label class="label-control" for="message">Phone number</label>
+                                <label class="label-control" for="message">Telefon raqam</label>
                                 <div class="help-block with-errors">{{ user_form.phone_number.errors }}</div>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="form-control-submit-button">SUBMIT</button>
+                                <button type="submit" class="form-control-submit-button">Yuborish</button>
                             </div>
                         </form>
                     </div> <!-- end of form-container -->
@@ -214,7 +230,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <p class="p-small">FEATURED IN</p>
+                    <p class="p-small">HAMKORLARIMIZ</p>
 
                     <!-- Image Slider -->
                     <div class="slider-container">
@@ -259,9 +275,9 @@
                 </div> <!-- end of col -->
                 <div class="col-lg-6">
                     <div class="text-container">
-                        <h2>I’m Garry Your Trainer</h2>
-                        <p>Hi everybody! I am Garry and I will be your main instructor durnig the SEO training course. I have more than 10 years experience in SEO and I am very passionate about this field. Register for the course and let's meet.</p>
-                        <p>Teaching students all about the beste SEO techniques is something I love to do as a full-time job</p>
+                        <h2>Men o'qituvchingiz Garriman</h2>
+                        <p>Hammaga salom! Men Garriman va o'qitish kursi davomida sizning asosiy o'qituvchingiz bo'laman. Men o'qituvchilik sohasida 10 yildan ortiq tajribaga egaman va men bu sohaga juda ishtiyoqliman. Kursga ro'yxatdan o'ting va uchrashamiz.</p>
+                        <p>O'qitish - men to'liq vaqtli ish sifatida qilishni yaxshi ko'radigan yagona narsa!</p>
                     </div> <!-- end of text-container -->
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
@@ -275,7 +291,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h2>What Will You Learn In Our SEO Focused Training Course</h2>
+                    <h2>O'qitishga Yo'naltirilgan Trening Kursimizda Nimani O'rganasiz</h2>
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
             <div class="row">
@@ -284,22 +300,22 @@
                         <li class="media">
                             <i class="bullet">1</i>
                             <div class="media-body">
-                                <h4>Optimizing your site for mobile devices</h4>
-                                <p>One of the keys of great SEO is having a mobile friendly website which works smoothly on all devices</p>
+                                <h4>Dars rejalari tuzishni.</h4>
+                                <p>Darslarni aniq maqsad va rejaga ko‘ra tashkil qilishni o‘rganasiz</p>
                             </div>
                         </li>
                         <li class="media">
                             <i class="bullet">2</i>
                             <div class="media-body">
-                                <h4>Understand how users search</h4>
-                                <p>It's not enough anymore to find relevant industry keywords and write huge amounts of content </p>
+                                <h4>Samarali o'qitish usullarini</h4>
+                                <p>Turli usullar va strategiyalar orqali bilimlarni oson va tushunarli yetkazishni bilib olasiz</p>
                             </div>
                         </li>
                         <li class="media">
                             <i class="bullet">3</i>
                             <div class="media-body">
-                                <h4>Write for humans optimize for engines</h4>
-                                <p>Write well structured and understandable articles not just a mix of paragraphs that contain keywords</p>
+                                <h4>Talabalar bilan samarali muloqot qilishni</h4>
+                                <p>Talabalar bilan ochiq, tushunarli va rag‘batlantiruvchi muloqot o‘rnatishni o‘rganasiz</p>
                             </div>
                         </li>
                     </ul>
@@ -309,22 +325,22 @@
                         <li class="media">
                             <i class="bullet">4</i>
                             <div class="media-body">
-                                <h4>Analyse your existing search traffic</h4>
-                                <p>A good action plan comes out of understanding where your current position is and the environment</p>
+                                <h4>Darslarni interaktiv o'tkazishni</h4>
+                                <p>Talabalarni faol ishtirok etishga jalb qiladigan texnikalardan foydalanishni o‘rganasiz</p>
                             </div>
                         </li>
                         <li class="media">
                             <i class="bullet">5</i>
                             <div class="media-body">
-                                <h4>Keep updated with the latest changes</h4>
-                                <p>Google changes it's search indexing algorithm twice a year so it's important to stay updated with news</p>
+                                <h4>Baholash va tahlil qilish usullarini</h4>
+                                <p>Talabalarning bilim va ko‘nikmalarini ob’ektiv baholashni hamda natijalarni tahlil qilishni o‘rganasiz</p>
                             </div>
                         </li>
                         <li class="media">
                             <i class="bullet">6</i>
                             <div class="media-body">
-                                <h4>Learn the most important ranking factors</h4>
-                                <p>Learn which are the most important search engine ranking factors and optimize your website accordnigly</p>
+                                <h4>O'qitish jarayonini optimallashtirishni</h4>
+                                <p>Darslarni samarali va unumli tashkil qilish uchun innovatsion yondashuvlarni o‘rganasiz</p>
                             </div>
                         </li>
                     </ul>
@@ -341,9 +357,9 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="text-container">
-                        <h2>Who Should Attend The SEO Training Course</h2>
-                        <p>This course is for anyone passionate about the web and especially fit for those seeking to improve their online presence for company websites and blogs </p>
-                        <a class="btn-solid-reg popup-with-move-anim" href="#details-lightbox">LIGHTBOX</a>
+                        <h2>O'qituvchilik Kursida Kim Qatnashishi Kerak</h2>
+                        <p>Bu kurs ta'limga qiziqqan har bir kishiga mo‘ljallangan va ayniqsa, maktablarda, o‘quv markazlarida yoki universitetlarda samarali dars o‘tishni xohlaganlar uchun mos keladi</p>
+                        <a class="btn-solid-reg popup-with-move-anim" href="#details-lightbox">Ko'ring</a>
                     </div> <!-- end of text-container -->
                 </div> <!-- end of col -->
                 <div class="col-lg-6">
@@ -366,31 +382,31 @@
                     </div> <!-- end of image-container -->
                 </div> <!-- end of col -->
                 <div class="col-lg-4">
-                    <h3>SEO Training Course</h3>
+                    <h3>O‘qituvchilik Kursi</h3>
                     <hr>
-                    <h5>For everybody</h5>
-                    <p>The training course is dedicates to anyone passionate about the web and in need of improving their current online presence.</p>
+                    <h5>Hammaga mo‘ljallangan</h5>
+                    <p>Ushbu trening kursi ta’limga qiziqqan va dars o‘tish mahoratini oshirishni istagan har bir kishiga mo‘ljallangan.</p>
                     <ul class="list-unstyled li-space-lg">
                         <li class="media">
-                            <i class="fas fa-square"></i><div class="media-body">Link building framework</div>
+                            <i class="fas fa-square"></i><div class="media-body">Samarali dars rejalari tuzish</div>
                         </li>
                         <li class="media">
-                            <i class="fas fa-square"></i><div class="media-body">Know your current position</div>
+                            <i class="fas fa-square"></i><div class="media-body">Hozirgi o‘quv usulingizni tahlil qilish</div>
                         </li>
                         <li class="media">
-                            <i class="fas fa-square"></i><div class="media-body">Partnering with blogs</div>
+                            <i class="fas fa-square"></i><div class="media-body">O‘quvchilar bilan samarali muloqot o‘rnatish</div>
                         </li>
                         <li class="media">
-                            <i class="fas fa-square"></i><div class="media-body">Naming your images</div>
+                            <i class="fas fa-square"></i><div class="media-body">Vizual materiallardan to‘g‘ri foydalanish</div>
                         </li>
                         <li class="media">
-                            <i class="fas fa-square"></i><div class="media-body">Creating good sitemaps</div>
+                            <i class="fas fa-square"></i><div class="media-body">Interaktiv dars metodlarini yaratish</div>
                         </li>
                         <li class="media">
-                            <i class="fas fa-square"></i><div class="media-body">Writing for humans</div>
+                            <i class="fas fa-square"></i><div class="media-body">O‘quvchilar uchun tushunarli va qiziqarli materiallar tayyorlash</div>
                         </li>
                     </ul>
-                    <a class="btn-solid-reg mfp-close page-scroll" href="#register">SIGN UP</a> <a class="btn-outline-reg mfp-close as-button" href="#screenshots">BACK</a>
+                    <a class="btn-solid-reg mfp-close page-scroll" href="#register">QO'SHILING</a> <a class="btn-outline-reg mfp-close as-button" href="#screenshots">Ortga</a>
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
         </div> <!-- end of container -->
@@ -403,12 +419,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h2>Course Video Presentation</h2>
+                    <h2>Kurs video taqdimoti</h2>
 
                     <!-- Video Preview -->
                     <div class="image-container">
                         <div class="video-wrapper">
-                            <a class="popup-youtube" href="https://www.youtube.com/watch?v=fLCjQJCekTs" data-effect="fadeIn">
+                            <a class="popup-youtube" href="https://youtu.be/ANnBP7Au6dA?si=2x8lyxOIXI5-fnCu" data-effect="fadeIn">
                                 <img class="img-fluid" src="/media/images/video.jpg" alt="alternative">
                                 <span class="video-play-button">
                                     <span></span>
@@ -430,8 +446,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h2>Key Takeaways</h2>
-                    <p class="p-heading">Here are the main topics that will be covered in the SEO training course. They cover all the basics of SEO and even some advanced techniques that will help you along the way</p>
+                    <h2>Asosiy Yo‘nalishlar</h2>
+                    <p class="p-heading">Quyida O‘qituvchilik Trening Kursida qamrab olinadigan asosiy mavzular keltirilgan. Ushbu kurs asosiy pedagogik ko‘nikmalarni va ilg‘or usullarni o‘z ichiga oladi.</p>
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
             <div class="row">
@@ -443,8 +459,8 @@
                             <i class="fas fa-atom"></i>
                         </div>
                         <div class="card-body">
-                            <h4 class="card-title">Position Analysis</h4>
-                            <p>Understand where your website is currently positioned in search engine queries</p>
+                            <h4 class="card-title">Dars uslubingizni tahlil qilish</h4>
+                            <p>Hozirgi dars o‘tish usulingizni tahlil qilib, kuchli va zaif tomonlarni aniqlash</p>
                         </div>
                     </div>
                     <!-- end of card -->
@@ -455,8 +471,8 @@
                             <i class="fas fa-key"></i>
                         </div>
                         <div class="card-body">
-                            <h4 class="card-title">Keyword Planning</h4>
-                            <p>Find the best relevant keywords that fit your website SEO strategy in the long run</p>
+                            <h4 class="card-title">Dars rejasini tuzish</h4>
+                            <p>Uzoq muddatli muvaffaqiyat uchun samarali dars rejalarini tuzishni o‘rganish</p>
                         </div>
                     </div>
                     <!-- end of card -->
@@ -468,8 +484,8 @@
                             <i class="fas fa-newspaper"></i>
                         </div>
                         <div class="card-body">
-                            <h4 class="card-title">Writing Articles</h4>
-                            <p>How to plan your content strategy and write articles that are optimized for SEO</p>
+                            <h4 class="card-title">Mazmunli dars materiallarini tayyorlash</h4>
+                            <p>Qiziqarli va tushunarli dars materiallarini yaratish bo‘yicha yo‘riqnomalar</p>
                         </div>
                     </div>
                     <!-- end of card -->
@@ -480,8 +496,8 @@
                             <i class="fas fa-link"></i>
                         </div>
                         <div class="card-body">
-                            <h4 class="card-title">Gathering Backlinks</h4>
-                            <p>Backlinks are vital for SEO and we'll teach you everything there is to know about them</p>
+                            <h4 class="card-title">O‘quvchilar bilan muloqot o‘rnatish</h4>
+                            <p>Talabalar bilan samarali muloqot o‘rnatish va ularning ishtirokini oshirish</p>
                         </div>
                     </div>
                     <!-- end of card -->
@@ -492,8 +508,8 @@
                             <i class="far fa-handshake"></i>
                         </div>
                         <div class="card-body">
-                            <h4 class="card-title">Build Partnerships</h4>
-                            <p>Partnerships will help you establish your website or blog as an authority in your field</p>
+                            <h4 class="card-title">Hamkorlikni rivojlantirish</h4>
+                            <p>Hamkasblar bilan tajriba almashish va o‘quv jarayonini takomillashtirish</p>
                         </div>
                     </div>
                     <!-- end of card -->
@@ -505,8 +521,8 @@
                             <i class="fas fa-chart-bar"></i>
                         </div>
                         <div class="card-body">
-                            <h4 class="card-title">Evaluate Actions</h4>
-                            <p>Learn how to use the right analytics tools to evaluate your SEO actions and improve them</p>
+                            <h4 class="card-title">Natijalarni tahlil qilish va yaxshilash</h4>
+                            <p>Dars samaradorligini baholash va o‘rganilgan ma’lumotlar asosida ta’lim jarayonini yaxshilash</p>
                         </div>
                     </div>
                     <!-- end of card -->
@@ -523,7 +539,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h3>Check out our attendees testimonials from previous editions of the SEO Training</h3>
+                    <h3>Oldingi O‘qituvchilik Trening Kurslarimiz ishtirokchilarining fikrlari bilan tanishing</h3>
 
                     <!-- Text Slider -->
                     <div class="slider-container">
@@ -536,8 +552,8 @@
                                         <img class="img-fluid" src="/media/images/testimonial-1.jpg" alt="alternative">
                                     </div> <!-- end of image-wrapper -->
                                     <div class="text-wrapper">
-                                        <div class="testimonial-text">I took the SEO training course about a year ago and I am very happy. It taught me all the basics of search engine optimization and some tricks.</div>
-                                        <div class="testimonial-author">Jude Thorn - Online Marketer</div>
+                                        <div class="testimonial-text">Men o‘qituvchilik trening kursini taxminan bir yil oldin o‘taganman va juda mamnunman. Bu kurs menga dars berishning asosiy usullarini va ba’zi foydali texnikalarni o‘rgatdi.</div>
+                                        <div class="testimonial-author">Jude Thorn - Online O'qituvchi</div>
                                     </div> <!-- end of text-wrapper -->
                                 </div> <!-- end of swiper-slide -->
                                 <!-- end of slide -->
@@ -548,8 +564,8 @@
                                         <img class="img-fluid" src="/media/images/testimonial-2.jpg" alt="alternative">
                                     </div> <!-- end of image-wrapper -->
                                     <div class="text-wrapper">
-                                        <div class="testimonial-text">Awesome course for the money. I never thought I could learn so much about search engine optimization in such a short amount of time. Highly recommend.</div>
-                                        <div class="testimonial-author">Roy Smith - Developer</div>
+                                        <div class="testimonial-text">Pulga arziydigan ajoyib kurs. Shu qisqa vaqt ichida o‘qitish uslublari haqida bunchalik ko‘p narsani o‘rganaman deb o‘ylamagandim. Juda tavsiya qilaman.</div>
+                                        <div class="testimonial-author">Roy Smith - O'qituvchi</div>
                                     </div> <!-- end of text-wrapper -->
                                 </div> <!-- end of swiper-slide -->
                                 <!-- end of slide -->
@@ -560,8 +576,8 @@
                                         <img class="img-fluid" src="/media/images/testimonial-3.jpg" alt="alternative">
                                     </div> <!-- end of image-wrapper -->
                                     <div class="text-wrapper">
-                                        <div class="testimonial-text">Corso is the best SEO training course in the market. It teaches you all the basics but it also adds value with some advanced tips & tricks the are great.</div>
-                                        <div class="testimonial-author">Martin Singer - Online Marketer</div>
+                                        <div class="testimonial-text">Corso — bu bozordagi eng yaxshi o‘qituvchilik trening kursi. U sizga asosiy ko‘nikmalarni o‘rgatadi, lekin ayni paytda ilg‘or usullar va foydali maslahatlar bilan ham boyitilgan.</div>
+                                        <div class="testimonial-author">Martin Singer - Direktor</div>
                                     </div> <!-- end of text-wrapper -->
                                 </div> <!-- end of swiper-slide -->
                                 <!-- end of slide -->
@@ -572,8 +588,8 @@
                                         <img class="img-fluid" src="/media/images/testimonial-4.jpg" alt="alternative">
                                     </div> <!-- end of image-wrapper -->
                                     <div class="text-wrapper">
-                                        <div class="testimonial-text">Learning SEO can actually be fun. I attended Corso SEO training and I had a great time with my peer students and the instructors. Highly recommended course.</div>
-                                        <div class="testimonial-author">Ronda Louis - Business Owner</div>
+                                        <div class="testimonial-text">O‘qitish usullarini o‘rganish aslida qiziqarli bo‘lishi mumkin. Men Corso o‘qituvchilik trening kursida qatnashdim va hamkasblarim hamda o‘qituvchilar bilan ajoyib vaqt o‘tkazdim. Juda tavsiya qilaman.</div>
+                                        <div class="testimonial-author">Ronda Louis - Xususiy maktab egasi</div>
                                     </div> <!-- end of text-wrapper -->
                                 </div> <!-- end of swiper-slide -->
                                 <!-- end of slide -->
@@ -602,9 +618,9 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="text-container">
-                        <h2>December 22nd 2020 at Innovation Hub Space</h2>
-                        <p>Our mission is to help people do better SEO. The team is excited to invite you to the next SEO Training Course session which undoubtedly will provide you with the necessary skills to improve your online presence. Fill out the form to register and we'll contact you in less than 24h</p>
-                        <a class="btn-solid-lg page-scroll" href="#register">REGISTER</a>
+                        <h2>2020-yil 22-dekabrda Innovation Hub Space-da</h2>
+                        <p>Bizning maqsadimiz — o‘qitish usullarini yaxshilashga yordam berish. Jamoamiz sizni navbatdagi O‘qituvchilik Trening Kursi sessiyasiga taklif qilishdan mamnun. Ushbu kurs sizga dars o‘tish mahoratingizni oshirish uchun zarur ko‘nikmalarni taqdim etadi. Ro‘yxatdan o‘tish uchun shaklni to‘ldiring, biz 24 soat ichida siz bilan bog‘lanamiz.</p>
+                        <a class="btn-solid-lg page-scroll" href="#register">Ro'yhatdan o'ting</a>
                     </div> <!-- end of text-container -->
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
@@ -628,9 +644,9 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="text-container">
-                        <h2>Contact Details</h2>
-                        <p>For registration questions please get in touch using the contact details below. For any questions use the form.</p>
-                        <h3>Main Office Location</h3>
+                        <h2>Aloqa Ma'lumotlari</h2>
+                        <p>Ro‘yxatdan o‘tish bilan bog‘liq savollar uchun quyidagi aloqa ma'lumotlari orqali biz bilan bog‘laning. Boshqa savollar uchun shakldan foydalaning.</p>
+                        <h3>Asosiy Ofis Manzili</h3>
                         <ul class="list-unstyled li-space-lg">
                             <li class="media">
                                 <i class="fas fa-map-marker-alt"></i>
@@ -654,7 +670,7 @@
                         {% csrf_token %}
                         <div class="form-group">
                             <input type="text" class="form-control-input" name="name" required>
-                            <label class="label-control" for="name">Name</label>
+                            <label class="label-control" for="name">Ism</label>
                             <div class="help-block with-errors">{{ question_form.name.errors }}</div>
                         </div>
                         <div class="form-group">
@@ -664,11 +680,11 @@
                         </div>
                         <div class="form-group">
                             <textarea class="form-control-textarea" name="message" required></textarea>
-                            <label class="label-control" for="message">Your message</label>
+                            <label class="label-control" for="message">Xabaringiz</label>
                             <div class="help-block with-errors">{{ question_form.message.errors }}</div>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="form-control-submit-button">SUBMIT</button>
+                            <button type="submit" class="form-control-submit-button">Yuborish</button>
                         </div>
                     </form>
                     <!-- end of contact form -->
@@ -686,8 +702,8 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="footer-col first">
-                        <h5>About Corso</h5>
-                        <p class="p-small">We're passionate about teaching people how to do better SEO for their online presence</p>
+                        <h5>Corso haqida</h5>
+                        <p class="p-small">Biz dars berish mahoratini oshirish va o‘quvchilar bilan samarali muloqot o‘rnatishni o‘rgatishga ishtiyoqmandmiz</p>
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -702,8 +718,8 @@
                 </div>
                 <div class="col-md-3">
                     <div class="footer-col fourth">
-                        <h5>Social Media</h5>
-                        <p class="p-small">For news & updates follow us</p>
+                        <h5>Ijtimoiy tarmoqlar</h5>
+                        <p class="p-small">Yangiliklar va yangilanishlar uchun bizni kuzatib boring.</p>
                         <a href="#your-link">
                             <i class="fab fa-facebook-f"></i>
                         </a>
@@ -735,8 +751,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <p class="p-small">Copyright © 2020 <a href="https://inovatik.com">Inovatik</a> - All rights reserved</p>
-                    <p class="p-small">Distributed By: <a href="https://themewagon.com" target="_blank">ThemeWagon</a></p>
+                    <p class="p-small">Copyright © 2025 <a href="https://github.com/rustamovg">Rustam</a> - Barcha huquqlar himoyalangan.</p>
                 </div> <!-- end of col -->
             </div> <!-- enf of row -->
         </div> <!-- end of container -->
@@ -754,5 +769,16 @@
     <script src="/static/js/jquery.magnific-popup.js"></script> <!-- Magnific Popup for lightboxes -->
     <script src="/static/js/validator.min.js"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
     <script src="/static/js/scripts.js"></script> <!-- Custom scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Displaying the modal if there is a message -->
+    {% if message %}
+    <script>
+        window.onload = function() {
+            var myModal = new bootstrap.Modal(document.getElementById('messageModal'));
+            myModal.show();
+        };
+    </script>
+    {% endif %}
 </body>
 </html>
